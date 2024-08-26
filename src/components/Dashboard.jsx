@@ -1,9 +1,11 @@
-// 선택된 포켓몬 보여주는 컴포넌트
-// import React from "react";
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
+import { DexContext } from "../pages/Dex";
+import { useContext } from "react";
 
-const Dashboard = ({ selectedPokemon, removePokemon }) => {
+const Dashboard = () => {
+  const { selectedPokemon } = useContext(DexContext);
+
   return (
     <div>
       <StMyPokemonContainer>
@@ -24,7 +26,6 @@ const Dashboard = ({ selectedPokemon, removePokemon }) => {
                   <PokemonCard
                     key={pokemon.id}
                     pokemon={pokemon}
-                    removePokemon={removePokemon}
                     isSelected={true}
                   />
                 );

@@ -1,20 +1,8 @@
 // import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dex from "./pages/Dex";
-import Home from "./pages/Home";
-// import styled from "styled-components";
-import PokemonDetail from "./components/PokemonDetail";
+import Router from "./shared/Router";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dex" element={<Dex />} />
-        <Route path="/dex-detail" element={<PokemonDetail />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <Router />;
 }
 
 export default App;

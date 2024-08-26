@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import PokemonList from "../components/PokemonList";
 import MOCK_DATA from "../mock";
 import DashBoard from "../components/Dashboard";
-// import styled from "styled-components";
+
+export const DexContext = createContext();
 
 function Dex() {
   const [selectedPokemon, setSelectedPokemon] = useState([]); // 선택된 포켓몬들 리스트
@@ -25,7 +26,6 @@ function Dex() {
   };
 
   const removePokemon = (pokemon) => {
-    // 제거는 필터를 이용해 봅시다
     const filteredPokemon = selectedPokemon.filter((selected) => {
       return selected.id !== pokemon.id;
     });
@@ -33,13 +33,10 @@ function Dex() {
   };
 
   return (
-    <div>
-      <DashBoard
-        selectedPokemon={selectedPokemon}
-        removePokemon={removePokemon}
-      />
-      <PokemonList pokemonData={MOCK_DATA} addPokemon={addPokemon} />
-    </div>
+    <DexContext.Provider value={{ addPokemon, removePokemon, selectedPokemon }}>
+      <DashBoard selectedPokemon={selectedPokemon} />
+      <PokemonList pokemonData={MOCK_DATA} />
+    </DexContext.Provider>
   );
 }
 

@@ -1,11 +1,15 @@
 // 개별 포켓몬의 정보를 카드 형식으로 보여주는 컴포넌트
 // import React from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { DexContext } from "../pages/Dex";
 
-const PokemonCard = ({ pokemon, addPokemon, removePokemon, isSelected }) => {
+const PokemonCard = ({ pokemon, isSelected }) => {
   const { img_url, korean_name, id } = pokemon;
   const navigate = useNavigate();
+
+  const { addPokemon, removePokemon } = useContext(DexContext);
 
   const handlerAddPokemon = (e) => {
     addPokemon(pokemon);
