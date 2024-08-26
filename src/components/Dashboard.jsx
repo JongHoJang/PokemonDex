@@ -48,12 +48,15 @@ const StMyPokemonContainer = styled.div`
 
 const StMyPokemonTitle = styled.div`
   text-align: center;
-  margin: 30px;
+  margin: 40px 0 60px 0;
+  font-size: 24px;
+  font-weight: bold;
 `;
 
 const StMyPokemonBoxContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
 //
