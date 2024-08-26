@@ -11,27 +11,21 @@ const Dashboard = () => {
       <StMyPokemonContainer>
         <StMyPokemonTitle>나만의 포켓몬</StMyPokemonTitle>
         <StMyPokemonBoxContainer>
-          {selectedPokemon.length === 0 ? (
-            <>
-              {Array.from({ length: 6 }).map((_, index) => (
-                <StEmptyCard key={index}>
-                  <StImgBall src="https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png" />
-                </StEmptyCard>
-              ))}
-            </>
-          ) : (
-            <StPokemonCard>
-              {selectedPokemon.map((pokemon) => {
-                return (
-                  <PokemonCard
-                    key={pokemon.id}
-                    pokemon={pokemon}
-                    isSelected={true}
-                  />
-                );
-              })}
-            </StPokemonCard>
-          )}
+          {Array.from({ length: 6 }).map((_, index) => {
+            const pokemon = selectedPokemon[index];
+
+            return pokemon ? (
+              <PokemonCard
+                key={pokemon.id}
+                pokemon={pokemon}
+                isSelected={true}
+              />
+            ) : (
+              <StEmptyCard key={`empty-${index}`}>
+                <StImgBall src="https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png" />
+              </StEmptyCard>
+            );
+          })}
         </StMyPokemonBoxContainer>
       </StMyPokemonContainer>
     </div>
@@ -76,11 +70,4 @@ const StEmptyCard = styled.div`
 
 const StImgBall = styled.img`
   width: 50px;
-`;
-
-const StPokemonCard = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6개 열로 균등하게 배치 */
-  gap: 20px; /* 카드 사이의 간격 */
-  width: 100%;
 `;
